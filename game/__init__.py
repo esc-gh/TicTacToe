@@ -36,17 +36,17 @@ while playing:
             c_player = s_player
         run2 = 1
         while run2: # current player picks a square to play their symbol and make sure it's an empty square
-            run3 = 1
-            while run3:
-                square = (int(input(f"{c_player.name}'s turn. Pick a square to play (1-9): ")))-1
-                if 0 < square < 9:
-                    if board.get_index(square) == " ":
-                        board.set_index(square, c_player.get_symbol())
-                        run2,run3 = 0,0
-                    else:
-                        print("That square is already taken, please pick again")
+            # run3 = 1
+            # while run3:
+            square = (int(input(f"{c_player.name}'s turn. Pick a square to play (1-9): ")))-1
+            if 0 <= square < 9:
+                if board.get_index(square) == " ":
+                    board.set_index(square, c_player.get_symbol())
+                    run2 = 0
                 else:
-                    print("Invalid grid square, please pick again")
+                    print("That square is already taken, please pick again")
+            else:
+                print("Invalid grid square, please pick again")
         board.play()
         if board.victory(c_player.get_symbol()) == True: #check if anybody has won
             print(f"{c_player.name} is the winner. Congratulations!")
