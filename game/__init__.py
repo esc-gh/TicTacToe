@@ -27,22 +27,22 @@ while playing:
         s_player = p1
     # the main game
     board.play()
-    run = 1         # main play loop for each turn
+    run = 1 # main play loop for each turn
     while run:
-        t_count +=1         # up the turn counter to check whose go it is
+        t_count +=1 # up the turn counter to check whose go it is
         if t_count%2 == 1:
             c_player = f_player
         else:
             c_player = s_player
         run2 = 1
-        while run2:         # current player picks a square to play their symbol and make sure it's an empty square
+        while run2: # current player picks a square to play their symbol and make sure it's an empty square
             run3 = 1
             while run3:
                 square = (int(input(f"{c_player.name}'s turn. Pick a square to play (1-9): ")))-1
                 if 0 < square < 9:
                     if board.get_index(square) == " ":
                         board.set_index(square, c_player.get_symbol())
-                        run2 = 0
+                        run2,run3 = 0,0
                     else:
                         print("That square is already taken, please pick again")
                 else:
